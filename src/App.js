@@ -6,11 +6,14 @@ import { getPokemon } from './api';
 import logo from './statics/logo.svg';
 import { getPokemonsWithDetails, setLoading } from './actions';
 import { useDispatch, useSelector } from 'react-redux';
+import { get } from 'immutable';
 import './App.css';
 
 function App() {
-  const pokemons = useSelector(state => state.pokemons);
-  const loading = useSelector(state => state.loading);
+  // const pokemons = useSelector(state => state.pokemons);
+  const pokemons = useSelector((state) => get(state,'pokemons')).toJS();
+  // const loading = useSelector(state => state.loading);
+  const loading = useSelector((state) => get(state,'loading'));
   const dispatch = useDispatch();
 
   useEffect(() => {
